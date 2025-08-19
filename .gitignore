@@ -4,6 +4,7 @@
 .vscode
 application.properties
 application-nixc.properties
+application-hw.properties
 
 ### Eclipse ###
 .metadata
