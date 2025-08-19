@@ -2,8 +2,9 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,windows,eclipse,maven
 
 .vscode
-application-hw.properties
 application.properties
+application-nixc.properties
+application-hw.properties
 
 ### Eclipse ###
 .metadata
