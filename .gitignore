@@ -3,6 +3,7 @@
 
 .vscode
 application-hw.properties
+application.properties
 
 ### Eclipse ###
 .metadata
