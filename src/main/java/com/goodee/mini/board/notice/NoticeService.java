@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.goodee.mini.board.BoardService;
+import com.goodee.mini.board.BoardVO;
 
 @Service
 public class NoticeService implements BoardService {
@@ -14,8 +15,13 @@ public class NoticeService implements BoardService {
 	NoticeDao noticeDao;
 	
 	@Override
-	public List<NoticeVO> list() {
+	public List<NoticeVO> list() throws Exception {
 		return noticeDao.list();
+	}
+	
+	@Override
+	public NoticeVO detail(BoardVO boardVO) throws Exception {
+		return noticeDao.detail(boardVO);
 	}
 	
 }
