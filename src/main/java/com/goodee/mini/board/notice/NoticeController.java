@@ -32,6 +32,7 @@ public class NoticeController {
 	public String list(Model model) throws Exception {
 		List<NoticeVO> list = noticeService.list();
 		model.addAttribute("list", list);
+//		model.addAttribute("pager", pager);
 		
 		return "notice/list";
 	}

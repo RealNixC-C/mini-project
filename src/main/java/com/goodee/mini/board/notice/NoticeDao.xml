@@ -18,7 +18,23 @@
  			<result column="save_name" property="saveName"/>
  		</association>
  	</resultMap>
-
+	
+<!-- 	<sql id="search"> -->
+<!--   		WHERE -->
+<!--   		<choose> -->
+<!--   			<when test="kind='k1'"> -->
+<!--   				board_title -->
+<!--   			</when> -->
+<!--   			<when test="kind='k2'"> -->
+<!--   				board_content -->
+<!--   			</when> -->
+<!--   			<otherwise> -->
+<!--   				board_writer -->
+<!--   			</otherwise> -->
+<!--   		</choose>  -->
+<!--   		LIKE CONCAT ('%', #{keyword}, '%') -->
+<!--   	</sql> -->
+	
 	<select id="list" resultType="NoticeVO">
 		SELECT * FROM NOTICE
 		ORDER BY board_no DESC
@@ -29,6 +45,11 @@
 		LEFT JOIN NOTICE_ATTACH USING(board_no)
 		WHERE board_no = #{boardNo}
 	</select>
+	
+<!-- 	<select id="totalCount" resultType="Long" parameterType="Pager"> -->
+<!-- 		SELECT COUNT(board_no) FROM NOTICE -->
+<!-- 		<include refid="search"></include> -->
+<!-- 	</select> -->
 	
 	<insert id="add" parameterType="BoardVO" useGeneratedKeys="true" keyProperty="boardNo">
 		INSERT INTO NOTICE (mem_no, board_title, board_content, board_date, board_hit)

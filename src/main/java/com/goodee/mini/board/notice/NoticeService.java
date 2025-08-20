@@ -35,6 +35,12 @@ public class NoticeService implements BoardService {
 	
 	@Override
 	public List<NoticeVO> list() throws Exception {
+		
+		// pager 추가후 주석 해제
+//		Long totalCount = noticeDao.totalCount(pager);
+//		if(totalCount == 0) return Collections.emptyList();
+//		pager.makeNum(totalCount);
+		
 		return noticeDao.list();
 	}
 	
@@ -50,10 +56,8 @@ public class NoticeService implements BoardService {
 			boardFileVO.setBoardNo(boardVO.getBoardNo());
 			result = noticeDao.addFile(boardFileVO);
 		}
-		
 		return result;
 	}
-	
 	
 	@Override
 	public BoardVO detail(BoardVO boardVO) throws Exception {

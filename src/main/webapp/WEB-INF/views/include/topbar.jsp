@@ -3,14 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container px-4 px-lg-5">
-		<a class="navbar-brand" href="/">Start Bootstrap</a>
+		<a class="navbar-brand" href="/"><img src="/img/logo.png" alt="로고" style="height : 60px;"> </a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"	data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-				<li class="nav-item"><a class="nav-link" href="/member/login">반려동물</a></li>
-				<li class="nav-item"><a class="nav-link" href="/pet/list">후원</a></li>
+				<li class="nav-item"><a class="nav-link" href="/pet/list">반려동물</a></li>
+				<li class="nav-item"><a class="nav-link" href="/donate/list">후원</a></li>
 				<li class="nav-item"><a class="nav-link" href="/notice/list">공지사항</a></li>
 				<li class="nav-item"><a class="nav-link" href="/question/list">질의응답</a></li>
 			</ul>
@@ -32,8 +32,10 @@
 					</c:when>
 					<c:otherwise>
 						<!-- 세션에 member가 없으면 로그인, 회원가입 버튼 보여주기 -->
-						<a href="/member/login" class="btn btn-outline-dark" type="button">로그인</a>
-						<a href="/member/join" class="btn btn-outline-dark" type="button">회원가입</a>
+						<li>
+							<a href="/member/login" class="btn btn-outline-dark" type="button">로그인</a>
+							<a href="/member/join" class="btn btn-outline-dark ml-2" type="button">회원가입</a>
+						</li>
 					</c:otherwise>
 				</c:choose>
 			</ul>

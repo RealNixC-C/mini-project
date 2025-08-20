@@ -27,15 +27,15 @@
                 <div class="col-md-8 offset-md-2">
                 	<div class="row justify-content-center">
                 		<div class="col-md-8">
-                			<form action="frm-search">
+                			<form action="frm-search" method="get">
                 				<div class="input-group mb-3">
-                					<input type="hidden" id="pageBum" name="pageNum">
+                					<input type="hidden" id="pageNum" name="pageNum">
                 					<select class="form-select rounded" name="kind">
-                						<option value="">제목</option>
-                						<option value="">내용</option>
+                						<option value="s1">제목</option>
+                						<option value="s2">내용</option>
                 					</select>
-                					<input type="text" class="form-control" value="" placeholder="검색">
-                					<button class="btn btn-secondary" type="submit" id="">검색</button> 
+                					<input type="text" class="form-control" value="" placeholder="검색" name="keyword">
+                					<button class="btn btn-secondary" type="submit">검색</button> 
                 				</div>
                 			</form>
                 		</div>
