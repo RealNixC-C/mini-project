@@ -22,13 +22,13 @@
   	</resultMap>
   	<insert id="join" parameterType="MemberVO">
 		INSERT INTO MEMBER
-		VALUES (null, 2, #{memId}, #{memPass}, #{memName}, #{memEmail}, #{memPhone}, #{memBirth}, #{memAddress})
+		VALUES (null, 2, #{memId}, #{memPass}, #{memName}, #{memEmail}, #{memPhone}, #{memBirth}, #{memAddress}, 1)
 	</insert>
 	
-	<select id="login" parameterType="MemberVO">
-		SELECT M.*, J.*
+	<select id="login" parameterType="MemberVO" resultMap="loginResult">
+		SELECT M.*, A.*
 		FROM MEMBER M
-			INNER JOIN J
+			INNER JOIN AUTH A
 			USING(auth_no)
 		WHERE mem_id = #{memId}
 	</select>

@@ -19,6 +19,7 @@ public class MemberService {
 		check = bindingResult.hasErrors();
 		
 		if(!memberVO.getMemPass().equals(memberVO.getMemPassCheck())) {
+			System.out.println("비밀번호 확인: "+memberVO.getMemPass()+memberVO.getMemPassCheck()+check);
 			check = true;
 			bindingResult.rejectValue("memPassCheck", "", "비밀번호가 일치하지 않습니다.");
 		}
@@ -27,6 +28,7 @@ public class MemberService {
 		MemberVO memberCheck = memberDAO.login(memberVO);
 		
 		if (memberCheck != null) {
+			System.out.println("아이디중복검사할때 db객체에있는 아이디: "+memberCheck.getMemId());
 			check = true;
 			bindingResult.rejectValue("username", "", "이미 등록되어 있는 ID입니다.");
 		}
@@ -35,5 +37,15 @@ public class MemberService {
 	
 	public int join(MemberVO memberVO) throws Exception {
 		return memberDAO.join(memberVO);
+	}
+	
+	public MemberVO login(MemberVO memberVO) throws Exception{
+		MemberVO checkVO = memberDAO.login(memberVO);
+		
+		if(checkVO != null && memberVO.getMemPass().equals(checkVO.getMemPass())) {
+			return checkVO;
+		}
+		
+		return null;
 	}
 }

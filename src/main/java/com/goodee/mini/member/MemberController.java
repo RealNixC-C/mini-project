@@ -23,7 +23,7 @@ public class MemberController {
 	private MemberService memberService;
 	
 	@GetMapping("join")
-	public void join() throws Exception {
+	public void join(MemberVO memberVO) throws Exception {
 		
 	}
 	
@@ -42,17 +42,28 @@ public class MemberController {
 	}
 	
 	@GetMapping("login")
-	public void login() throws Exception {
+	public void login(MemberVO memberVO) throws Exception {
 		
 	}
 	
 	@PostMapping("login")
 	public String login(MemberVO memberVO, HttpSession session) throws Exception{
+		memberVO = memberService.login(memberVO);
 		
 		if(memberVO != null) {
 			session.setAttribute("member", memberVO);
 		}
 		
 		return "redirect:/";
+	}
+	
+	@GetMapping("logout")
+	public String logout(HttpSession session) throws Exception{
+		session.invalidate();
+		return "redirect:/";
+	}
+	
+	@GetMapping("mypage")
+	public void mypage(MemberVO memberVO) throws Exception {
 	}
 }
