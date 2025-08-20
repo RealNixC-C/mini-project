@@ -3,6 +3,9 @@ package com.goodee.mini.member;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.goodee.mini.member.validation.AddGroup;
+import com.goodee.mini.member.validation.UpdateGroup;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -20,21 +23,22 @@ public class MemberVO {
 	
 	private Long memNo;
 	private int authNo;
-	@NotBlank(message = "ID는 필수입니다.")
+	@NotBlank(message = "ID는 필수입니다.", groups = AddGroup.class)
 	private String memId;
 	@NotBlank
-	@Size(min = 6, max = 8)
+	@Size(min = 6, max = 8, groups = AddGroup.class)
 	private String memPass;
 	private String memPassCheck;
-	@NotBlank
+	@NotBlank(message = "이름은 필수입니다.", groups = {AddGroup.class, UpdateGroup.class})
 	private String memName;
-	@Email
+	@Email(groups = {AddGroup.class, UpdateGroup.class})
 	private String memEmail;
-	@Pattern(regexp = "^\\d{10,11}$", message = "전화번호는 10자리 또는 11자리 숫자여야 합니다.")
+	@Pattern(groups = {AddGroup.class, UpdateGroup.class}, regexp = "^\\d{10,11}$", message = "전화번호는 숫자만 입력하며, 10자리 또는 11자리로 입력해 주세요.")
 	private String memPhone;
-	@NotNull
-	@Past
+	@NotNull(message = "생일을 입력해주세요")
+	@Past(message = "현재 이전", groups = {AddGroup.class, UpdateGroup.class})
 	private LocalDate memBirth;
+	@NotBlank(message = "주소를 입력해주세요.", groups = {AddGroup.class, UpdateGroup.class})
 	private String memAddress;
 	private boolean enable ;
 	

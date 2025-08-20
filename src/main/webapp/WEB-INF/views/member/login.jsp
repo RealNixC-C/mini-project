@@ -37,7 +37,7 @@
 						  <form:password path="memPass" cssClass="form-control"/>
 						  <form:errors path="memPass"></form:errors>
 						</div>
-						<button type="submit" class="btn btn-primary">가입하기</button>
+						<button type="submit" class="btn btn-primary">로그인</button>
 					</form:form>
 				</div>
         	

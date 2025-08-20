@@ -4,15 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
-import com.winter.app.member.MemberVO;
-
 @Service
 public class MemberService {
 	
 	@Autowired
 	private MemberDAO memberDAO;
 	
-	public boolean hasMemberError(MemberVO memberVO, BindingResult bindingResult) {
+	public boolean hasMemberError(MemberVO memberVO, BindingResult bindingResult) throws Exception {
 		
 		boolean check = false;
 		// check: true  => 검증 실패
@@ -21,6 +19,7 @@ public class MemberService {
 		check = bindingResult.hasErrors();
 		
 		if(!memberVO.getMemPass().equals(memberVO.getMemPassCheck())) {
+			System.out.println("비밀번호 확인: "+memberVO.getMemPass()+memberVO.getMemPassCheck()+check);
 			check = true;
 			bindingResult.rejectValue("memPassCheck", "", "비밀번호가 일치하지 않습니다.");
 		}
@@ -28,10 +27,25 @@ public class MemberService {
 		// ID 중복 검사
 		MemberVO memberCheck = memberDAO.login(memberVO);
 		
-		return true;
+		if (memberCheck != null) {
+			System.out.println("아이디중복검사할때 db객체에있는 아이디: "+memberCheck.getMemId());
+			check = true;
+			bindingResult.rejectValue("username", "", "이미 등록되어 있는 ID입니다.");
+		}
+		return check;
 	}
 	
-	public int join(MemberVO memberVO) {
-		return 0;
+	public int join(MemberVO memberVO) throws Exception {
+		return memberDAO.join(memberVO);
+	}
+	
+	public MemberVO login(MemberVO memberVO) throws Exception{
+		MemberVO checkVO = memberDAO.login(memberVO);
+		
+		if(checkVO != null && memberVO.getMemPass().equals(checkVO.getMemPass())) {
+			return checkVO;
+		}
+		
+		return null;
 	}
 }
