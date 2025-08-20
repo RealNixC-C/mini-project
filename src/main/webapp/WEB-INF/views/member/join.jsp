@@ -6,12 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
-<c:import url="/WEB-INF/views/include/head_css.jsp"></c:import>
+<title>회원가입</title>
+	<c:import url="/WEB-INF/views/include/head_css.jsp"></c:import>
 </head>
 <body>
-<c:import url="/WEB-INF/views/include/topbar.jsp"></c:import>
+	<c:import url="/WEB-INF/views/include/topbar.jsp"></c:import>
         <!-- Header-->
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">

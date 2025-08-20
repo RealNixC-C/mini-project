@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.goodee.mini.member.validation.AddGroup;
+import com.goodee.mini.member.validation.UpdateGroup;
+
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,7 +29,7 @@ public class MemberController {
 	}
 	
 	@PostMapping("join")
-	public String join(@Validated MemberVO memberVO, BindingResult bindingResult) throws Exception {
+	public String join(@Validated({AddGroup.class, UpdateGroup.class}) MemberVO memberVO, BindingResult bindingResult) throws Exception {
 		
 		boolean check = memberService.hasMemberError(memberVO, bindingResult);
 		
@@ -44,7 +47,11 @@ public class MemberController {
 	}
 	
 	@PostMapping("login")
-	public String login(HttpSession session, Model model) throws Exception{
+	public String login(MemberVO memberVO, HttpSession session) throws Exception{
+		
+		if(memberVO != null) {
+			session.setAttribute("member", memberVO);
+		}
 		
 		return "redirect:/";
 	}
