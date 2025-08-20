@@ -47,10 +47,9 @@
 						<div class="col-sm-2 text-center my-auto">${ l.boardDate }</div>
 					</div>
 					</c:forEach>
-<!-- 					멤버 세션 생성되면 주석 해제 -->
-<%-- 					<c:if test="${ member.authNo eq 1 }"> --%>
+					<c:if test="${ member.authNo eq 1 }">
 		           		<a class="btn btn-secondary mt-3" href="/notice/add">공지등록</a>            
-<%-- 		           	</c:if> --%>
+		           	</c:if>
                 </div>
             </div>
         </section>

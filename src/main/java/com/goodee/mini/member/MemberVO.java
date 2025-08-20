@@ -42,5 +42,5 @@ public class MemberVO {
 	private String memAddress;
 	private boolean enable ;
 	
-	private List<RoleVO> roleVOs;
+	private AuthVO authVO;
 }

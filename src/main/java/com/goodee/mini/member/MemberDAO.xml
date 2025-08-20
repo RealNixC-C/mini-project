@@ -7,6 +7,7 @@
   	<resultMap type="MemberVO" id="loginResult">
   		<id column="mem_no" property="memNo"/>
   		<id column="mem_id" property="memId"/>
+  		<result column="auth_no" property="authNo"/>
   		<result column="mem_pass" property="memPass"/>
   		<result column="mem_name" property="memName"/>
   		<result column="mem_email" property="memEmail"/>
@@ -14,15 +15,13 @@
   		<result column="mem_birth" property="memBirth"/>
   		<result column="mem_address" property="memAddress"/>
   		<result column="enable" property="enable"/>
-  		
-  		<collection property="roleVOs" javaType="java.util.List" ofType="RoleVO">
-  			<id column="auth_no" property="authNo"/>
+  		<association property="authVO" javaType="AuthVO">
   			<result column="auth_name" property="authName"/>
-  		</collection>
+  		</association>
   	</resultMap>
   	<insert id="join" parameterType="MemberVO">
 		INSERT INTO MEMBER
-		VALUES (null, 2, #{memId}, #{memPass}, #{memName}, #{memEmail}, #{memPhone}, #{memBirth}, #{memAddress}, 1)
+		VALUES (null, 2, #{memId}, #{memPass}, #{memName}, #{memEmail}, #{memPhone}, #{memBirth}, #{memAddress}, 2)
 	</insert>
 	
 	<select id="login" parameterType="MemberVO" resultMap="loginResult">
