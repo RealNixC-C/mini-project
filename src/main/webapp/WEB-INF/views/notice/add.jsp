@@ -35,6 +35,8 @@
             </div>
         </section>
 	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
-
+	<script type="text/javascript">
+		
+	</script>
 </body>
 </html>
