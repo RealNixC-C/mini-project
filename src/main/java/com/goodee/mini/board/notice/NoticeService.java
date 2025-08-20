@@ -41,7 +41,7 @@ public class NoticeService implements BoardService {
 		if(image == null || image.getSize() == 0) return null;
 		String fileName = fileManager.fileSave(upload + board, image);
 		
-		return "";
+		return "/files/" + board + "/file/" + fileName;
 	}
 	
 }

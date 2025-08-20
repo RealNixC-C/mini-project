@@ -47,7 +47,7 @@
 		    			method : "POST",
 		    			body : f
 		    		})
-		    		.then(r=>text())
+		    		.then(r=>r.text())
 		    		.then(r=>{
 		    			$("#boardContent").summernote('editor.insertImage',r);
 		    		})
