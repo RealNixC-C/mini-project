@@ -18,24 +18,27 @@
 
 			<!-- 제목 -->
 			<h2 class="mb-3 border-bottom pb-2">${ boardVO.boardTitle }</h2>
-
 			<!-- 작성자/날짜 -->
+			<form method="post" id="frm" action="./delete">
+				<input type="hidden" id="boardNo" name="boardNo" value="${ boardVO.boardNo }">
+			</form>
 			<div class="d-flex justify-content-between text-muted small mb-4">
 				<span>등록일: ${ boardVO.boardDate }</span>
 			</div>
-
 			<!-- 내용 -->
 			<div class="mb-5" style="min-height: 200px;">
-				<p>${ boardVO.boardContent }</p>
+				<c:if test="${ not empty boardVO.boardFileVO }">
+					<img alt="image" src="/files/notice/${ boardVO.boardFileVO.saveName }" style="height : 250px;">
+				</c:if>
+				${ boardVO.boardContent }
 			</div>
-
 			<!-- 버튼 영역 -->
 			<div class="d-flex justify-content-between">
 				<a href="/notice/list" class="btn btn-outline-secondary btn-sm">목록으로</a>
 				<div>
 					<c:if test="${ member.authNo eq 1 }">
-						<a href="/notice/edit?id=1" class="btn btn-outline-primary btn-sm">수정</a>
-						<a href="/notice/delete?id=1" class="btn btn-outline-danger btn-sm">삭제</a>
+						<a href="/notice/update?boardNo=${ boardVO.boardNo }" class="btn btn-outline-primary btn-sm">수정</a>
+						<button class="btn btn-outline-danger btn-sm" id="btn_delete">삭제</button>
 					</c:if>
 				</div>
 			</div>
@@ -43,6 +46,6 @@
 		</div>
 	</section>
 	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
-
+	<script src="/js/notice/notice_detail.js"></script>
 </body>
 </html>

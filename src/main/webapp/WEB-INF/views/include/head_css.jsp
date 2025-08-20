@@ -13,3 +13,9 @@
         <!-- Summernote CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs5.min.css" rel="stylesheet">
         
+        <style>
+        	p {
+        		margin : 0;
+        		padding : 0;
+        	}
+		</style>
