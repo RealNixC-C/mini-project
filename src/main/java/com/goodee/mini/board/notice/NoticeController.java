@@ -14,8 +14,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.goodee.mini.board.BoardVO;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @RequestMapping(value = "/notice/*")
+@Slf4j
 public class NoticeController {
 
 	@Autowired
@@ -52,6 +55,9 @@ public class NoticeController {
 	@PostMapping("boardFile")
 	@ResponseBody
 	public String boardFile(MultipartFile image) throws Exception {
+		
+		log.info("{}", image.getName());
+		System.out.println("boardFile들어옴");
 		
 		return noticeService.boardFile(image);
 	}

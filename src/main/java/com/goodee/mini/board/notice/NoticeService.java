@@ -20,7 +20,7 @@ public class NoticeService implements BoardService {
 	@Autowired
 	private FileManager fileManager;
 	
-	@Value("${app.upload")
+	@Value("${app.upload}")
 	private String upload;
 	
 	@Value("${board.notice}")
@@ -41,7 +41,7 @@ public class NoticeService implements BoardService {
 		if(image == null || image.getSize() == 0) return null;
 		String fileName = fileManager.fileSave(upload + board, image);
 		
-		return "/files/" + board + "/file/" + fileName;
+		return "/files/" + board + "/" + fileName;
 	}
 	
 }

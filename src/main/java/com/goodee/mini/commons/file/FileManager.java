@@ -21,6 +21,7 @@ public class FileManager {
 		String fileName = UUID.randomUUID().toString().replaceAll("-", "") + image.getOriginalFilename();
 		
 		// 파일 저장
+		file = new File(file, fileName);
 		image.transferTo(file);
 		
 		return fileName;
