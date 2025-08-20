@@ -9,6 +9,11 @@
 		SELECT * FROM NOTICE
 		ORDER BY board_no DESC
 	</select>
+	
+	<select id="detail" parameterType="BoardVO" resultType="NoticeVO">
+		SELECT * FROM NOTICE
+		WHERE board_no = #{boardNo}
+	</select>
  
 </mapper>
   

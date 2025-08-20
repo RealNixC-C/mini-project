@@ -6,6 +6,7 @@ import com.goodee.mini.board.notice.NoticeVO;
 
 public interface BoardDao {
 	
-	public List<NoticeVO> list();
+	public List<NoticeVO> list() throws Exception;
+	public NoticeVO detail(BoardVO boardVO) throws Exception;
 
 }
