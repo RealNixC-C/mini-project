@@ -12,15 +12,6 @@
 </head>
 <body>
 <c:import url="/WEB-INF/views/include/topbar.jsp"></c:import>
-        <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Shop in style</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop homepage template</p>
-                </div>
-            </div>
-        </header>
         <!-- Section-->
         <section class="py-5">
         	<h1>로그인</h1>
