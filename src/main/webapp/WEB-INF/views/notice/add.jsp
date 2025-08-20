@@ -17,26 +17,45 @@
         <section class="py-5">
             <div class="container-fluid px-4 px-lg-5 mt-5">
             	<div class="w-75 mx-auto">
+            	<h2 class="text-center">공지 작성</h2>
             		<form:form method="post" modelAttribute="boardVO" enctype="multipart/form-data">
             			<div class="col-md-12 mb-3">
-            				<form:input path="boardWriter" cssClass="form-control"/>
-            				<form:errors path="boardWriter"></form:errors>
-            			</div>
-            			<div class="col-md-12 mb-3">
-            				<form:input path="boardTitle" cssClass="form-control"/>
+            				<form:input path="boardTitle" cssClass="form-control" placeholder="제목"/>
             				<form:errors path="boardTitle"></form:errors>
             			</div>
-            			<div class="col-md-12 mb-3">
-            				<form:textarea path="boardContent" cssClass=""/>
-            				<form:errors path="boardContent"></form:errors>
-            			</div>
+            			<form:textarea path="boardContent" id="boardContent" cssClass="col-md-12 mb-3"/>
+            			<input type="file">            			
+            			<button class="btn btn-secondary mt-2">등록</button>
             		</form:form>	
             	</div>
             </div>
         </section>
 	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
-	<script type="text/javascript">
-		
-	</script>
+	<script>
+	$(function() {
+		  $('#boardContent').summernote({
+		    placeholder: '공지 내용을 입력하세요',
+		    tabsize: 2,
+		    height: 300,
+		    callbacks: {
+		    	onImageUpload: function name(files) {
+		    		console.log("files", files[0]);
+		    		let f = new FormData();
+		    		f.append("image", files[0])
+		    		
+		    		fetch("./boardFile", {
+		    			method : "POST",
+		    			body : f
+		    		})
+		    		.then(r=>text())
+		    		.then(r=>{
+		    			$("#boardContent").summernote('editor.insertImage',r);
+		    		})
+		    		.catch(e => console.log(e))
+		    	}
+		    }
+		  });
+		});
+    </script>
 </body>
 </html>

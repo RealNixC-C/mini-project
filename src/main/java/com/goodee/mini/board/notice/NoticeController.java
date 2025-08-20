@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.goodee.mini.board.BoardVO;
-
-import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping(value = "/notice/*")
 public class NoticeController {
 
 	@Autowired
-	NoticeService noticeService;
+	private NoticeService noticeService;
 	
 	@GetMapping("list")
 	public String list(Model model) throws Exception {
@@ -48,6 +48,13 @@ public class NoticeController {
 //	public String add(Model model, @Valid BoardVO boardVO) throws Exception {
 //		
 //	}
+	
+	@PostMapping("boardFile")
+	@ResponseBody
+	public String boardFile(MultipartFile image) throws Exception {
+		
+		return noticeService.boardFile(image);
+	}
 	
 	
 }
