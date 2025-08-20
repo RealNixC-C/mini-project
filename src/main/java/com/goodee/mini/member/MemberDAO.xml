@@ -21,7 +21,7 @@
   	</resultMap>
   	<insert id="join" parameterType="MemberVO">
 		INSERT INTO MEMBER
-		VALUES (null, 2, #{memId}, #{memPass}, #{memName}, #{memEmail}, #{memPhone}, #{memBirth}, #{memAddress}, 2)
+		VALUES (null, 2, #{memId}, #{memPass}, #{memName}, #{memEmail}, #{memPhone}, #{memBirth}, #{memAddress}, 1)
 	</insert>
 	
 	<select id="login" parameterType="MemberVO" resultMap="loginResult">
@@ -31,4 +31,20 @@
 			USING(auth_no)
 		WHERE mem_id = #{memId}
 	</select>
+	
+	<update id="updateInfo" parameterType="MemberVO">
+		UPDATE MEMBER
+		SET mem_name = #{memName}
+			,mem_email = #{memEmail}
+			,mem_phone = #{memPhone}
+			,mem_birth = #{memBirth}
+			,mem_address = #{memAddress}
+		WHERE mem_no = #{memNo}
+	</update>
+	
+	<update id="deleteMem" parameterType="MemberVO">
+		UPDATE MEMBER
+		SET enable = 0
+		WHERE mem_no = #{memNo}
+	</update>
   </mapper>

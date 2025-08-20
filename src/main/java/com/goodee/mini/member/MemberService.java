@@ -28,9 +28,8 @@ public class MemberService {
 		MemberVO memberCheck = memberDAO.login(memberVO);
 		
 		if (memberCheck != null) {
-			System.out.println("아이디중복검사할때 db객체에있는 아이디: "+memberCheck.getMemId());
 			check = true;
-			bindingResult.rejectValue("username", "", "이미 등록되어 있는 ID입니다.");
+			bindingResult.rejectValue("memId", "", "이미 등록되어 있는 ID입니다.");
 		}
 		return check;
 	}
@@ -47,5 +46,19 @@ public class MemberService {
 		}
 		
 		return null;
+	}
+	
+	public int updateInfo(MemberVO memberVO) throws Exception{
+		int result = memberDAO.updateInfo(memberVO);
+		System.out.println(result);
+		return result;
+	}
+	
+//	public int updatePass(MemberVO memberVO) throws Exception{
+//		return memberDAO.updatePass(memberVO);
+//	}
+	
+	public int deleteMem(MemberVO memberVO) throws Exception{
+		return memberDAO.deleteMem(memberVO);
 	}
 }
