@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -38,7 +39,7 @@ public class NoticeController {
 	}
 	
 	@GetMapping("add")
-	public String add() throws Exception {
+	public String add(@ModelAttribute("boardVO") BoardVO boardVO) throws Exception {
 		
 		return "notice/add";
 	}
@@ -48,13 +49,5 @@ public class NoticeController {
 //		
 //	}
 	
-	@GetMapping("alert")
-	public String alert(Model model) throws Exception {
-		
-		model.addAttribute("msg", "알람창 확인");
-		model.addAttribute("url", "/notice/list");
-		
-		return "commons/result";
-	}
 	
 }
