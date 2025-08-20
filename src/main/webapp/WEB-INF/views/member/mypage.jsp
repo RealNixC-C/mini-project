@@ -53,8 +53,8 @@
 						</div>
 
 						<button type="submit" class="btn btn-primary">수정하기</button>
-						<button type="button" class="btn btn-primary">비밀번호변경</button>
-						<button type="button" class="btn btn-danger">회원탈퇴</button>
+						<button href="/member/changePass" type="button" class="btn btn-primary">비밀번호변경</button>
+						<button href="/member/deleteMem" type="button" class="btn btn-danger">회원탈퇴</button>
 					</form:form>
 				</div>
         	

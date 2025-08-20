@@ -66,4 +66,11 @@ public class MemberController {
 	@GetMapping("mypage")
 	public void mypage(MemberVO memberVO) throws Exception {
 	}
+	
+	@GetMapping("changePass")
+	public void changePass(MemberVO memberVO) throws Exception {
+		
+	}
+	
+	
 }
