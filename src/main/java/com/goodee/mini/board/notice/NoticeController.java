@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.goodee.mini.board.BoardVO;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -35,8 +37,8 @@ public class NoticeController {
 	@GetMapping("detail")
 	public String detail(Model model, BoardVO boardVO) throws Exception {
 		
-		NoticeVO noticeVO = noticeService.detail(boardVO);
-		model.addAttribute("noticeVO", noticeVO);
+		boardVO = noticeService.detail(boardVO);
+		model.addAttribute("boardVO", boardVO);
 		
 		return "notice/detail";
 	}
@@ -47,10 +49,16 @@ public class NoticeController {
 		return "notice/add";
 	}
 	
-//	@PostMapping("add")
-//	public String add(Model model, @Valid BoardVO boardVO) throws Exception {
-//		
-//	}
+	@PostMapping("add")
+	public String add(Model model, @Valid BoardVO boardVO, BindingResult bindingResult, MultipartFile image) throws Exception {
+		
+		if (bindingResult.hasErrors()) {
+			return "notice/add";
+		}
+		noticeService.add(boardVO, image);
+		
+		return "notice/detail?boardNo" + boardVO.getBoardNo();
+	}
 	
 	@PostMapping("boardFile")
 	@ResponseBody

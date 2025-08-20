@@ -24,7 +24,8 @@
             				<form:errors path="boardTitle"></form:errors>
             			</div>
             			<form:textarea path="boardContent" id="boardContent" cssClass="col-md-12 mb-3"/>
-            			<input type="file">            			
+            			<form:errors path="boardContent"></form:errors>
+            			<input type="file" name="image" class="">
             			<button class="btn btn-secondary mt-2">등록</button>
             		</form:form>	
             	</div>

@@ -23,8 +23,12 @@ public class NoticeService implements BoardService {
 	@Value("${app.upload}")
 	private String upload;
 	
+	@Value("${app.temp}")
+	private String temp;
+	
 	@Value("${board.notice}")
 	private String board;
+	
 	
 	@Override
 	public List<NoticeVO> list() throws Exception {
@@ -32,16 +36,27 @@ public class NoticeService implements BoardService {
 	}
 	
 	@Override
-	public NoticeVO detail(BoardVO boardVO) throws Exception {
+	public int add(BoardVO boardVO, MultipartFile image) throws Exception {
+		
+		int result = noticeDao.add(boardVO);
+		
+		if(image != null || image.getSize() != 0) {
+			fileManager.fileSave(upload + board, image);
+		}
+		
+	}
+	
+	@Override
+	public BoardVO detail(BoardVO boardVO) throws Exception {
 		return noticeDao.detail(boardVO);
 	}
 	
 	@Override
 	public String boardFile(MultipartFile image) throws Exception {
 		if(image == null || image.getSize() == 0) return null;
-		String fileName = fileManager.fileSave(upload + board, image);
+		String fileName = fileManager.fileSave(upload + temp, image);
 		
-		return "/files/" + board + "/" + fileName;
+		return "/files" + temp + "/" + fileName;
 	}
 	
 }
