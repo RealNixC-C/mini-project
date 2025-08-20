@@ -51,6 +51,7 @@
 <%-- 					<c:if test="${ member.authNo eq 1 }"> --%>
 		           		<a class="btn btn-secondary mt-3" href="/notice/add">공지등록</a>            
 <%-- 		           	</c:if> --%>
+						<a class="btn btn-secondary mt-3" href="/notice/alert">알람확인</a>
                 </div>
             </div>
         </section>
