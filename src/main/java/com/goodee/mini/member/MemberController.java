@@ -2,7 +2,6 @@ package com.goodee.mini.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +37,7 @@ public class MemberController {
 		}
 		
 		int result = memberService.join(memberVO);
+		
 		return "redirect:/";
 	}
 	
