@@ -16,12 +16,10 @@
         	<div class="container-fluid">
 	        	<h1>비밀번호 변경</h1>
 					<!-- page contents 내용 -->
-					<form:form method="post" modelAttribute="memberVO" enctype="multipart/form-data">
-						<input type="hidden" name="memNo" value="${member.memNo}"/>
+					<form:form method="post" modelAttribute="memberVO" enctype="multipart/form-data" id="passFrm">
 						<div class="mb-3">
 							<label for="password" class="form-label">현재 비밀번호</label>
-							<form:password path="memPass" cssClass="form-control"/>
-							<form:errors path="memPass"></form:errors>
+							<input type="password" class="form-control" id="currentPass"/>
 						</div>
 						<div class="mb-3">
 							<label for="password" class="form-label">새로운 비밀번호</label>
@@ -34,7 +32,7 @@
 							<form:errors path="memPassCheck"></form:errors>
 						</div>		
 
-						<button type="submit" class="btn btn-primary">변경하기</button>
+						<button type="button" class="btn btn-primary">변경하기</button>
 					</form:form>
 				</div>
         	

@@ -101,16 +101,27 @@ public class MemberController {
 		
 		MemberVO sessionMember =(MemberVO)session.getAttribute("member");
 		
+		//세션멤버에는 기존정보가 다 있음
+		//System.out.println("sessionMember 세션정보:"+sessionMember.toString());
+		
 		if(bindingResult.hasErrors()) {
 			return "member/mypage";
 		}
 
-		memberVO.setMemNo(sessionMember.getMemNo());
-		memberVO.setMemPass(sessionMember.getMemPass());
-		System.out.println(memberVO.toString());
-		memberVO = memberService.login(memberVO);
-		session.setAttribute("member", memberVO);
-		int result = memberService.updateInfo(memberVO);
+		//유효성 검증 후, 에러가 없다면 실행
+		//memberVO에는 아이디비번이 없고, 변경된 내용값만 가지고있음
+		//System.out.println("mypage에서 받아온 멤버객체:"+memberVO.toString());
+		//모든정보를 가지고있는 세션멤버에 변경된정보를 가지고있는 멤버객체의 변경값을 넣어줌
+		sessionMember.setMemName(memberVO.getMemName()); //이름
+		sessionMember.setMemEmail(memberVO.getMemEmail()); //이메일
+		sessionMember.setMemPhone(memberVO.getMemPhone()); //전화번호
+		sessionMember.setMemBirth(memberVO.getMemBirth()); //생년월일
+		sessionMember.setMemAddress(memberVO.getMemAddress()); //주소
+		
+		//변경된 값을 다 갖게된 세션멤버를 업데이트에 보내줌
+		int result = memberService.updateInfo(sessionMember);
+		//세션에 업데이트된 세션멤버를 다시 넣어줌
+		session.setAttribute("member", sessionMember);
 		
 		String msg = "수정중 오류가 발생했습니다.";
 		
@@ -127,13 +138,24 @@ public class MemberController {
 	}
 	
 	@GetMapping("changePass")
-	public void changePass(MemberVO memberVO, Model model) throws Exception {
-		model.addAttribute(memberVO);
-	}
+	public void changePass(MemberVO memberVO) throws Exception {}
 	
 	@PostMapping("changePass")
-	public void changePass(@Validated({AddGroup.class, UpdateGroup.class}) MemberVO memberVO, BindingResult bindingResult, Model model) throws Exception {
-//		memberVO = memberService.login(memberVO);
+	public void changePass(@Validated({UpdateGroup.class}) MemberVO memberVO, BindingResult bindingResult, HttpSession session, Model model) throws Exception {
+		MemberVO sessionMember =(MemberVO)session.getAttribute("member");
+		System.out.println("세션에 담긴 객체정보: "+sessionMember.toString());
+		
+		//현재 비밀번호가 일치하는지 확인하기
+		if (sessionMember.getMemPass().equals(memberVO.getMemPass())) {
+			bindingResult.rejectValue("memPass", "", "이미 등록되어 있는 ID입니다.");
+		}
+		
+		//비밀번호 유효성 및 확인비번과 일치하는지 확인
+		
+		//새로운 비번으로 업데이트 해주기
+		
+		//세션 객체에 반영해주기
+		
 	}
 	
 	//post 매핑으로 바꾸기

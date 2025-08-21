@@ -23,7 +23,7 @@
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<li><a href="/member/logout" class="dropdown-item">로그아웃</a></li>
 								<li><hr class="dropdown-divider" /></li>
-								<li><a class="dropdown-item" href="member/mypage">마이페이지</a></li>
+								<li><a class="dropdown-item" href="/member/mypage">나의 정보</a></li>
 								<li><a class="dropdown-item" href="#!">찜</a></li>
 								<li><a class="dropdown-item" href="#!">입양신청</a></li>
 								<li><a class="dropdown-item" href="#!">후원</a></li>
