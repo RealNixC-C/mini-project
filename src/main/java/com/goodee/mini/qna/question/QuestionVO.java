@@ -1,8 +1,10 @@
-package com.goodee.mini.question;
+package com.goodee.mini.qna.question;
 
 import java.time.LocalDate;
 
 import com.goodee.mini.board.BoardVO;
+import com.goodee.mini.member.MemberVO;
+import com.goodee.mini.qna.reply.ReplyVO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,5 +22,8 @@ public class QuestionVO extends BoardVO{
 	private LocalDate questDate;
 	private Long questHit;
 	private boolean visible;
+	
+	private MemberVO memberVO;
+	private ReplyVO replyVO;
 	
 }

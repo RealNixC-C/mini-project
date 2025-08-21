@@ -10,7 +10,7 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
 				<li class="nav-item"><a class="nav-link" href="/pet/list">반려동물</a></li>
-				<li class="nav-item"><a class="nav-link" href="/donate/list">후원</a></li>
+				<li class="nav-item"><a class="nav-link" href="/donation/info">후원</a></li>
 				<li class="nav-item"><a class="nav-link" href="/notice/list">공지사항</a></li>
 				<li class="nav-item"><a class="nav-link" href="/question/list">질의응답</a></li>
 			</ul>
@@ -23,7 +23,7 @@
 							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<li><a href="/member/logout" class="dropdown-item">로그아웃</a></li>
 								<li><hr class="dropdown-divider" /></li>
-								<li><a class="dropdown-item" href="member/mypage">마이페이지</a></li>
+								<li><a class="dropdown-item" href="/member/mypage">나의 정보</a></li>
 								<li><a class="dropdown-item" href="#!">찜</a></li>
 								<li><a class="dropdown-item" href="#!">입양신청</a></li>
 								<li><a class="dropdown-item" href="#!">후원</a></li>

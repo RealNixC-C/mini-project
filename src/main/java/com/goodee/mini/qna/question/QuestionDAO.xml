@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.goodee.mini.qna.question.QuestionDAO">
+  	<resultMap type="QuestionVO" id="questionResultMap">
+		<id column="quest_no" property="questNo"/>
+		<result column="mem_no" property="memNo"/>
+		<result column="quest_title" property="questTitle"/>
+		<result column="quest_content" property="questContent"/>
+		<result column="quest_date" property="questDate"/>
+		<result column="quest_hit" property="questHit"/>
+		<result column="visible" property="visible"/>
+  	</resultMap>
+  
+  	<select id="list" resultType="QuestionVO">
+  		SELECT * 
+  		FROM QUESTION
+  		ORDER BY quest_no DESC
+  		<!-- LIMIT #{startIndex}, #{endIndex} -->
+  	</select>
+  	
+  	<select id="totalCount" resultType="Long" parameterType="Pager">
+  		SELECT COUNT(quest_no) FROM QUESTION
+  	</select>
+  	
+  	<delete id="delete" parameterType="QuestionVO">
+		DELETE FROM QUESTION
+		WHERE quest_no = #{questNo}
+  	</delete>
+  	
+  </mapper>

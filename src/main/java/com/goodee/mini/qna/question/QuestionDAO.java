@@ -1,4 +1,4 @@
-package com.goodee.mini.question;
+package com.goodee.mini.qna.question;
 
 import java.util.List;
 
@@ -11,4 +11,5 @@ public interface QuestionDAO {
 	
 	public int totalCount();
 	
+	public int delete(QuestionVO questionVO);
 }

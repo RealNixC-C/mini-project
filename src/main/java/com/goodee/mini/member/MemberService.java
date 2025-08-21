@@ -50,7 +50,6 @@ public class MemberService {
 	
 	public int updateInfo(MemberVO memberVO) throws Exception{
 		int result = memberDAO.updateInfo(memberVO);
-		System.out.println(result);
 		return result;
 	}
 	
