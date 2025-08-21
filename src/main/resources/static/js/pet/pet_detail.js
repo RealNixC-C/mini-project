@@ -1,4 +1,4 @@
-console.log("notice_detail");
+console.log("pet_detail.js");
 
 const btnDelete = document.getElementById("btn_delete");
 const frm = document.getElementById("frm");

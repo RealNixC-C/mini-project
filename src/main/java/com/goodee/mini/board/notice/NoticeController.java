@@ -31,9 +31,6 @@ public class NoticeController {
 	
 	@GetMapping("list")
 	public String list(Model model, Pager pager) throws Exception {
-		
-		System.out.println("==============================================" + pager.getKind());
-		
 		List<NoticeVO> list = noticeService.list(pager);
 		model.addAttribute("list", list);
 		model.addAttribute("pager", pager);
@@ -69,7 +66,6 @@ public class NoticeController {
 		if(result > 0) {
 			msg = "등록 성공";
 		}
-		
 		model.addAttribute("msg", msg);
 		model.addAttribute("url", "./list");
 		

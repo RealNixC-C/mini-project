@@ -1,6 +1,7 @@
 package com.goodee.mini.pet;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -18,11 +19,11 @@ public class PetVO {
 	private String petGender;
 	@NotBlank
 	private String petBreed;
-	@NotBlank
-	private int petSize;
-	@NotBlank
-	private int petAge;
-	@NotBlank
+	@NotNull
+	private Double petSize;
+	@NotNull
+	private Integer petAge;
+	@NotNull
 	private boolean petNeutering;
 	@NotBlank
 	private String petKind;

@@ -16,7 +16,7 @@ import com.goodee.mini.commons.file.FileManager;
 import com.goodee.mini.commons.pager.Pager;
 
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class NoticeService implements BoardService {
 	
 	@Autowired
@@ -107,13 +107,5 @@ public class NoticeService implements BoardService {
 		
 		return noticeDao.fileDelete(boardFileVO);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }
