@@ -107,7 +107,7 @@ public class MemberController {
 
 		memberVO.setMemNo(sessionMember.getMemNo());
 		memberVO.setMemPass(sessionMember.getMemPass());
-		System.out.println(memberVO.toString());
+		System.out.println("updateinfo 받아온정보:"+memberVO.toString());
 		memberVO = memberService.login(memberVO);
 		session.setAttribute("member", memberVO);
 		int result = memberService.updateInfo(memberVO);
