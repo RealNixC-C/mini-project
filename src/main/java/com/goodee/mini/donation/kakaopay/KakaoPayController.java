@@ -11,26 +11,18 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class KakaoPayController {
 
-    private final KakaoPayService kakaoPayService;
-
-    @PostMapping("/pay")
-    public String kakaoPay(@RequestParam("amount") int amount) {
-        KakaoPayReadyResponse response = kakaoPayService.kakaoPayReady(amount);
-        return "redirect:" + response.getNext_redirect_pc_url();
-    }
-
-    @RequestMapping("/success")
+    @RequestMapping("/kakaoPaySuccess")
     public String success() {
-        return "결제 성공"; // 혹은 성공 페이지 뷰 이름
+        return "donation/success"; // 추후 성공 페이지 연결
     }
 
-    @RequestMapping("/cancel")
+    @RequestMapping("/kakaoPayCancel")
     public String cancel() {
-        return "결제 취소"; // 혹은 취소 페이지 뷰 이름
+        return "결제 취소";
     }
 
-    @RequestMapping("/fail")
+    @RequestMapping("/kakaoPayFail")
     public String fail() {
-        return "결제 실패"; // 혹은 실패 페이지 뷰 이름
+        return "donation/fail";
     }
 }
