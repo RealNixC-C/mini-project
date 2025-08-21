@@ -19,18 +19,29 @@
             	<div class="w-75 mx-auto">
             	<h2 class="text-center">공지 작성</h2>
             		<form:form method="post" modelAttribute="boardVO" enctype="multipart/form-data">
+            		<form:hidden path="boardNo" id="boardNo" name="boardNo"/>
             			<div class="col-md-12 mb-3">
             				<form:input path="boardTitle" cssClass="form-control" placeholder="제목"/>
             				<form:errors path="boardTitle"></form:errors>
             			</div>
             			<form:textarea path="boardContent" id="boardContent" cssClass="col-md-12 mb-3"/>
-            			<input type="file">            			
+            			<form:errors path="boardContent"></form:errors>
+            			<div class="mt-2">
+            				<c:if test="${ empty boardVO.boardFileVO }">
+            					<input type="file" name="image" class="" value="">
+            				</c:if>
+            				<c:if test="${ not empty boardVO.boardFileVO }">
+            					<a href="/files/notice/${ boardVO.boardFileVO.saveName }">${ boardVO.boardFileVO.oriName }</a>
+            					<button type="button" class="btn btn-danger btn-sm" id="img_delete" data-attach-no="${ boardVO.boardFileVO.attachNo }">x</button>
+            				</c:if>
+            			</div>
             			<button class="btn btn-secondary mt-2">등록</button>
             		</form:form>	
             	</div>
             </div>
         </section>
 	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
+	<script src="/js/notice/notice_add.js"></script>
 	<script>
 	$(function() {
 		  $('#boardContent').summernote({

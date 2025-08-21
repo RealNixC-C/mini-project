@@ -14,10 +14,11 @@ public class BoardVO {
 
 	private Long boardNo;
 	private Long memNo;
-	@NotBlank
+	@NotBlank(message = "제목을 입력하세요")
 	private String boardTitle;
 	private String boardContent;
 	private LocalDate boardDate;
 	private Long boardHit;
 	
+	private BoardFileVO boardFileVO;
 }

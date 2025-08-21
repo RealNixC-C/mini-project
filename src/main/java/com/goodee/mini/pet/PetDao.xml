@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.goodee.mini.pet.PetDao">
+
+	<resultMap type="PetVO" id="petResultMap">
+ 		<id column="pet_no" property="petNo"/>
+ 		<result column="mem_no" property="memNo"/>
+ 		<result column="pet_name" property="petName"/>
+ 		<result column="pet_gender" property="petGender"/>
+ 		<result column="pet_size" property="petSize"/>
+ 		<result column="pet_age" property="petAge"/>
+ 		<result column="pet_neutering" property="petNeutering"/>
+ 		<result column="pet_kind" property="petKind"/>
+ 		<association property="petFileVO" javaType="PetFileVO">
+ 			<id column="attach_no" property="attachNo"/>
+ 			<result column="ori_name" property="oriName"/>
+ 			<result column="save_name" property="saveName"/>
+ 		</association>
+ 	</resultMap>
+ 	
+ 	<select id="list" resultMap="petResultMap">
+ 		SELECT * FROM PET
+ 		LEFT JOIN PET_ATTACH USING(pet_no) 
+ 	</select>
+ 
+</mapper>
