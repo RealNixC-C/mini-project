@@ -1,5 +1,6 @@
 package com.goodee.mini.board.notice;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,10 @@ import com.goodee.mini.board.BoardFileVO;
 import com.goodee.mini.board.BoardService;
 import com.goodee.mini.board.BoardVO;
 import com.goodee.mini.commons.file.FileManager;
+import com.goodee.mini.commons.pager.Pager;
 
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class NoticeService implements BoardService {
 	
 	@Autowired
@@ -34,14 +36,12 @@ public class NoticeService implements BoardService {
 	
 	
 	@Override
-	public List<NoticeVO> list() throws Exception {
+	public List<NoticeVO> list(Pager pager) throws Exception {
+		Long totalCount = noticeDao.totalCount(pager);
+		if(totalCount == 0) return Collections.emptyList();
+		pager.makeNum(totalCount);
 		
-		// pager 추가후 주석 해제
-//		Long totalCount = noticeDao.totalCount(pager);
-//		if(totalCount == 0) return Collections.emptyList();
-//		pager.makeNum(totalCount);
-		
-		return noticeDao.list();
+		return noticeDao.list(pager);
 	}
 	
 	@Override
@@ -107,13 +107,5 @@ public class NoticeService implements BoardService {
 		
 		return noticeDao.fileDelete(boardFileVO);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

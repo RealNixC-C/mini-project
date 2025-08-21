@@ -10,6 +10,7 @@
  		<result column="mem_no" property="memNo"/>
  		<result column="pet_name" property="petName"/>
  		<result column="pet_gender" property="petGender"/>
+ 		<result column="pet_breed" property="petBreed"/>
  		<result column="pet_size" property="petSize"/>
  		<result column="pet_age" property="petAge"/>
  		<result column="pet_neutering" property="petNeutering"/>
@@ -21,9 +22,52 @@
  		</association>
  	</resultMap>
  	
- 	<select id="list" resultMap="petResultMap">
- 		SELECT * FROM PET
- 		LEFT JOIN PET_ATTACH USING(pet_no) 
+ 	<select id="list" resultMap="petResultMap" parameterType="Pager">
+ 		SELECT P.*, PA.* FROM PET P
+ 		LEFT JOIN PET_ATTACH PA ON P.pet_no = PA.pet_no
+ 		ORDER BY P.pet_no DESC
+ 		LIMIT #{startIndex}, #{endIndex}
  	</select>
+ 	
+ 	<select id="totalCount" resultType="Long" parameterType="Pager">
+		SELECT COUNT(pet_no) FROM PET
+	</select>
+	
+	<insert id="add" parameterType="PetVO" useGeneratedKeys="true" keyProperty="petNo">
+		INSERT INTO PET (mem_no, pet_name, pet_gender, pet_breed, pet_size, pet_age, pet_neutering, pet_kind)	
+		VALUES (#{memNo}, #{petName}, #{petGender}, #{petBreed}, #{petSize}, #{petAge}, #{petNeutering}, #{petKind})
+	</insert>
+	
+	<update id="update" parameterType="PetVO">
+		UPDATE PET
+		SET pet_name = #{petName}, pet_gender = #{petGender}, pet_breed = #{petBreed}, pet_size = #{petSize}, pet_age = #{petAge}, pet_neutering = #{petNeutering}, pet_kind = #{petKind}
+		WHERE pet_no = #{petNo}
+	</update>
+	
+	<delete id="delete" parameterType="PetVo">
+		DELETE FROM PET
+		WHERE pet_no = #{petNo}
+	</delete>
+	
+	<insert id="addFile" parameterType="PetFileVO">
+		INSERT INTO PET_ATTACH (pet_no, ori_name, save_name)
+		VALUES (#{petNo}, #{oriName}, #{saveName})
+	</insert>
+ 
+ 	<select id="detail" parameterType="PetVO" resultMap="petResultMap">
+ 		SELECT * FROM PET P 
+ 		LEFT JOIN PET_ATTACH PA ON P.pet_no = PA.pet_no
+ 		WHERE P.pet_no = #{petNo}
+ 	</select>
+ 	
+ 	<select id="fileDetail" parameterType="PetFileVO" resultType="PetFileVO">
+ 		SELECT * FROM PET_ATTACH
+ 		WHERE attach_no = #{attachNo}
+ 	</select>
+ 	
+ 	<delete id="fileDelete" parameterType="PetFileVO">
+ 		DELETE FROM PET_ATTACH
+ 		WHERE attach_no = #{attachNo}
+ 	</delete>
  
 </mapper>
