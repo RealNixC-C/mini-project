@@ -18,14 +18,14 @@
 					<!-- page contents 내용 -->
 					<form:form method="post" modelAttribute="memberVO" enctype="multipart/form-data">
 						<div class="mb-3">
-						  <label for="id" class="form-label">ID</label>
-						  <form:input path="memId" cssClass="form-control"/>
-						  <form:errors path="memId"></form:errors>
+							<label for="id" class="form-label">ID</label>
+							<form:input path="memId" cssClass="form-control"/>
+							<form:errors path="memId"></form:errors>
 						</div>
 						<div class="mb-3">
-						  <label for="password" class="form-label">password</label>
-						  <form:password path="memPass" cssClass="form-control"/>
-						  <form:errors path="memPass"></form:errors>
+							<label for="password" class="form-label">password</label>
+							<form:password path="memPass" cssClass="form-control"/>
+							<form:errors path="memPass"></form:errors>
 						</div>
 						<div class="mb-3">
 							<label for="passwordCheck" class="form-label">password</label>
@@ -33,29 +33,29 @@
 							<form:errors path="memPassCheck"></form:errors>
 						</div>		
 						<div class="mb-3">
-						  <label for="name" class="form-label">name</label>
-						  <form:input path="memName" cssClass="form-control"/>
-						  <form:errors path="memName"></form:errors>
+							<label for="name" class="form-label">name</label>
+							<form:input path="memName" cssClass="form-control"/>
+							<form:errors path="memName"></form:errors>
 						</div>
 						<div class="mb-3">
-						  <label for="email" class="form-label">email</label>
-						  <form:input path="memEmail" cssClass="form-control"/>
-						  <form:errors path="memEmail"></form:errors>
+							<label for="email" class="form-label">email</label>
+							<form:input path="memEmail" cssClass="form-control"/>
+							<form:errors path="memEmail"></form:errors>
 						</div>
 						<div class="mb-3">
-						  <label for="phone" class="form-label">phone</label>
-						  <form:input path="memPhone" cssClass="form-control"/>
-						  <form:errors path="memPhone"></form:errors>
+							<label for="phone" class="form-label">phone</label>
+							<form:input path="memPhone" cssClass="form-control"/>
+							<form:errors path="memPhone"></form:errors>
 						</div>
 						<div class="mb-3">
-						  <label for="birth" class="form-label">birth</label>
-						  <form:input path="memBirth"  type="date" cssClass="form-control"/>
-						  <form:errors path="memBirth"></form:errors>
+							<label for="birth" class="form-label">birth</label>
+							<form:input path="memBirth"  type="date" cssClass="form-control"/>
+							<form:errors path="memBirth"></form:errors>
 						</div>
 						<div class="mb-3">
-						  <label for="phone" class="form-label">address</label>
-						  <form:input path="memAddress" cssClass="form-control"/>
-						  <form:errors path="memAddress"></form:errors>
+							<label for="phone" class="form-label">address</label>
+							<form:input path="memAddress" cssClass="form-control"/>
+							<form:errors path="memAddress"></form:errors>
 						</div>
 
 						<button type="submit" class="btn btn-primary">가입하기</button>

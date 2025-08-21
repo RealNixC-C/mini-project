@@ -26,7 +26,7 @@ public class MemberVO {
 	@NotBlank(message = "ID는 필수입니다.", groups = AddGroup.class)
 	private String memId;
 	@NotBlank
-	@Size(min = 6, max = 8, groups = AddGroup.class)
+	@Size(min = 6, max = 8, groups = {AddGroup.class, UpdateGroup.class})
 	private String memPass;
 	private String memPassCheck;
 	@NotBlank(message = "이름은 필수입니다.", groups = {AddGroup.class, UpdateGroup.class})
@@ -36,7 +36,7 @@ public class MemberVO {
 	@Pattern(groups = {AddGroup.class, UpdateGroup.class}, regexp = "^\\d{10,11}$", message = "전화번호는 숫자만 입력하며, 10자리 또는 11자리로 입력해 주세요.")
 	private String memPhone;
 	@NotNull(message = "생일을 입력해주세요")
-	@Past(message = "현재 이전", groups = {AddGroup.class, UpdateGroup.class})
+	@Past(message = "생년월일은 현재 날짜 이전이어야 합니다.", groups = {AddGroup.class, UpdateGroup.class})
 	private LocalDate memBirth;
 	@NotBlank(message = "주소를 입력해주세요.", groups = {AddGroup.class, UpdateGroup.class})
 	private String memAddress;
