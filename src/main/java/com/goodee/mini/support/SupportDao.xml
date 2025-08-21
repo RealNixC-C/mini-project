@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.goodee.mini.support.SupportDao">
+
+	<insert id="save" parameterType="SupportVO">
+		INSERT INTO SUPPORT (mem_no, amount, order_id, payment_key, payment_method, status, created_at, updated_at)
+        VALUES (#{memNo}, #{amount}, #{orderId}, #{paymentKey}, #{paymentMethod}, #{status}, NOW(), NOW())
+	</insert>
+
+	<select id="findByMemNo" parameterType="long" resultType="SupportVO">
+        SELECT support_no, mem_no, amount, order_id, payment_key,
+               payment_method, status, created_at, updated_at
+        FROM support
+        WHERE mem_no = #{memNo}
+        ORDER BY created_at DESC
+    </select>
+
+</mapper>
