@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.goodee.mini.board.BoardFileVO;
 import com.goodee.mini.board.BoardVO;
+import com.goodee.mini.commons.pager.Pager;
 import com.goodee.mini.member.MemberVO;
 
 import jakarta.servlet.http.HttpSession;
@@ -29,10 +30,13 @@ public class NoticeController {
 	private NoticeService noticeService;
 	
 	@GetMapping("list")
-	public String list(Model model) throws Exception {
-		List<NoticeVO> list = noticeService.list();
+	public String list(Model model, Pager pager) throws Exception {
+		
+		System.out.println("==============================================" + pager.getKind());
+		
+		List<NoticeVO> list = noticeService.list(pager);
 		model.addAttribute("list", list);
-//		model.addAttribute("pager", pager);
+		model.addAttribute("pager", pager);
 		
 		return "notice/list";
 	}

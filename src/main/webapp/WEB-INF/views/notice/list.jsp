@@ -27,14 +27,14 @@
                 <div class="col-md-8 offset-md-2">
                 	<div class="row justify-content-center">
                 		<div class="col-md-8">
-                			<form action="frm-search" method="get">
+                			<form id="frm-search" method="get">
                 				<div class="input-group mb-3">
                 					<input type="hidden" id="pageNum" name="pageNum">
                 					<select class="form-select rounded" name="kind">
-                						<option value="s1">제목</option>
-                						<option value="s2">내용</option>
+                						<option value="s1" ${ pager.kind eq 's1' ? 'selected' : '' }>제목</option>
+                						<option value="s2" ${ pager.kind eq 's2' ? 'selected' : '' }>내용</option>
                 					</select>
-                					<input type="text" class="form-control" value="" placeholder="검색" name="keyword">
+                					<input type="text" class="form-control" value="${ pager.keyword }" placeholder="검색" name="keyword">
                 					<button class="btn btn-secondary" type="submit">검색</button> 
                 				</div>
                 			</form>
@@ -50,11 +50,31 @@
 					<c:if test="${ member.authNo eq 1 }">
 		           		<a class="btn btn-secondary mt-3" href="/notice/add">공지등록</a>            
 		           	</c:if>
+		           	<div>
+						<nav aria-label="Page navigation example">
+							<ul class="pagination justify-content-center">
+								<li class="page-item">
+									<button type="button" class="page-link pn" data-pn="${ pager.startNum-1 }" aria-label="Previous"> 
+										<span aria-hidden="true">&laquo;</span>
+									</button>
+								</li>
+								<c:forEach begin="${ pager.startNum }" end="${ pager.endNum }" var="i">
+									<li class="page-item"><button type="button" class="page-link pn" data-pn="${i}" >${i}</button></li>
+								</c:forEach>
+								<li class="page-item">
+									<button type="button" class="page-link pn" data-pn="${ pager.endNum+1 }" aria-label="Next"> 
+										<span aria-hidden="true">&raquo;</span>
+									</button>
+								</li>
+							</ul>
+						</nav>
+					</div>
                 </div>
             </div>
         </section>
         
 	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
+	<script src="/js/notice/notice_list.js"></script>
 
 </body>
 </html>

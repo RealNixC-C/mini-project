@@ -3,10 +3,11 @@ package com.goodee.mini.board;
 import java.util.List;
 
 import com.goodee.mini.board.notice.NoticeVO;
+import com.goodee.mini.commons.pager.Pager;
 
 public interface BoardDao {
 	
-	public List<NoticeVO> list() throws Exception;
+	public List<NoticeVO> list(Pager pager) throws Exception;
 	public BoardVO detail(BoardVO boardVO) throws Exception;
 	public int add(BoardVO boardVO) throws Exception;
 	public int addFile(BoardFileVO boardFileVO) throws Exception;
@@ -14,4 +15,5 @@ public interface BoardDao {
 	public BoardFileVO fileDetail(BoardFileVO boardFileVO) throws Exception;
 	public int update(BoardVO boardVO) throws Exception;
 	public int delete(BoardVO boardVO) throws Exception;
+	public Long totalCount(Pager pager) throws Exception;
 }
