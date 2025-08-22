@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -32,6 +33,9 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/support/*")
 @RequiredArgsConstructor
 public class SupportController {
+	
+	@Value("${toss.secret.key}")
+	private String gck;
 	
 	@Autowired
 	private SupportService supportService;
@@ -65,7 +69,7 @@ public class SupportController {
 	    String orderId = (String) requestData.get("orderId");
 	    Long amount = Long.valueOf(requestData.get("amount").toString());
 
-	    String secretKey = "test_gsk_docs_OaPz8L5KdmQXkzRz3y47BMw6"; 
+	    String secretKey = gck; 
 	    String url = "https://api.tosspayments.com/v1/payments/confirm";
 
 	    // 1. Base64 인코딩
