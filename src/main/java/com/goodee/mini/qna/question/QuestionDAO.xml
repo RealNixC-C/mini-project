@@ -12,11 +12,19 @@
 		<result column="quest_date" property="questDate"/>
 		<result column="quest_hit" property="questHit"/>
 		<result column="visible" property="visible"/>
+		
+		<association property="memberVO" javaType="MemberVO">
+			<result column="mem_id" property="memId"/>
+			<result column="enable" property="enable"/>
+		</association>
+		
   	</resultMap>
   
-  	<select id="list" resultType="QuestionVO">
-  		SELECT * 
-  		FROM QUESTION
+  	<select id="list" resultMap="questionResultMap">
+  		SELECT Q.*, M.* 
+  		FROM QUESTION Q
+  			JOIN MEMBER M
+  			USING(mem_no)
   		ORDER BY quest_no DESC
   		<!-- LIMIT #{startIndex}, #{endIndex} -->
   	</select>
@@ -24,6 +32,19 @@
   	<select id="totalCount" resultType="Long" parameterType="Pager">
   		SELECT COUNT(quest_no) FROM QUESTION
   	</select>
+  	
+  	<select id="detail" parameterType="QuestionVO" resultMap="questionResultMap">
+		SELECT Q.*, M.* 
+  		FROM QUESTION Q
+  			JOIN MEMBER M
+  			USING(mem_no)
+		WHERE quest_no = #{questNo}
+  	</select>
+  	
+  	<insert id="insert" parameterType="QuestionVO">
+  		INSERT INTO QUESTION (mem_no, quest_title, quest_content, quest_date)
+  		VALUES(#{memNo}, #{questTitle}, #{questContent}, now())
+  	</insert>
   	
   	<delete id="delete" parameterType="QuestionVO">
 		DELETE FROM QUESTION

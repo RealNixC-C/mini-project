@@ -13,12 +13,17 @@
 	<c:import url="/WEB-INF/views/include/topbar.jsp"></c:import>
         <!-- Section-->
         <section class="py-5">
-        	<div class="container-fluid">
+        	<div class="container-fluid d-flex justify-content-center">
+        		<div style="width: 70vw;">
 					<!-- page contents 내용 -->
-		        	<h1>성공</h1>
-		        	
+		        	<h2>후원 감사합니다.</h2>
+		        	<hr>
+		        	<p>후원번호 : ${donation.donateNo }</p>
+		        	<p>후원금액 : ${donation.donateAmount }</p>
+		        	<p>후원일자 : ${donation.donateDate }</p>
 		        	
 				</div>
+			</div>
         </section>
 	<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 

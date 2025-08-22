@@ -26,7 +26,7 @@
 								<li><a class="dropdown-item" href="/member/mypage">나의 정보</a></li>
 								<li><a class="dropdown-item" href="#!">찜</a></li>
 								<li><a class="dropdown-item" href="#!">입양신청</a></li>
-								<li><a class="dropdown-item" href="#!">후원</a></li>
+								<li><a class="dropdown-item" href="/donation/detail">후원</a></li>
 							</ul>
 						</li>
 					</c:when>

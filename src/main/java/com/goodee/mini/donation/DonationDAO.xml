@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.goodee.mini.donation.DonationDAO">
+  	
+  	
+  	
+  	<select id="selectRecent" parameterType="DonationVO" resultType="DonationVO">
+  		SELECT * 
+		FROM DONATION 
+		WHERE mem_no = #{memNo}
+  		ORDER BY donate_no DESC 
+		LIMIT 1;
+  	</select>
+  
+  	<insert id="insert" parameterType="DonationVO">
+  		INSERT INTO DONATION (mem_no, donate_amount, donate_date)
+  		VALUES (#{memNo}, #{donateAmount}, #{donateDate})
+  	</insert>
+  
+  </mapper>

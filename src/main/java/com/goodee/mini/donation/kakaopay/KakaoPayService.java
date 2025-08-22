@@ -22,11 +22,6 @@ public class KakaoPayService {
 	
 	@Value("${kakao.admin-key}")
     private String adminKey;
-
-	@PostConstruct
-	public void init() {
-	    System.out.println("Authorization header: KakaoAK " + adminKey);
-	}
 	
 	public KakaoPayReadyResponse kakaoPayReady(int amount) {
 	    String requestUrl = "https://open-api.kakaopay.com/online/v1/payment/ready";
