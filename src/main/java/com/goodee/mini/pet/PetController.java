@@ -116,8 +116,13 @@ public class PetController {
 	
 	@GetMapping("adopt")
 	public String adopt(Model model, PetVO petVO) throws Exception {
+		petVO = petService.detail(petVO);
+		model.addAttribute("petVO", petVO);
+		
 		return "pet/adopt";
 	}
+	
+	
 	
 	
 	

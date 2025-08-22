@@ -36,7 +36,7 @@
 	                            </div>
 	                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent mx-auto">
 	                                <a class="btn btn-outline-dark mt-auto" href="./detail?petNo=${ pet.petNo }">상세보기</a>
-	                                <a class="btn btn-outline-dark mt-auto" href="./adopt">입양</a>
+	                                <a class="btn btn-outline-dark mt-auto" href="./adopt?petNo=${ pet.petNo }">입양</a>
 	                            </div>
 	                        </div>
 	                    </div>
