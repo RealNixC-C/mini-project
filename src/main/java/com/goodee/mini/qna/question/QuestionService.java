@@ -15,6 +15,14 @@ public class QuestionService {
 		return questionDAO.list();
 	}
 	
+	public QuestionVO detail(QuestionVO questionVO) throws Exception{
+		return questionDAO.detail(questionVO);
+	}
+	
+	public int insert(QuestionVO questionVO) throws Exception {
+		return questionDAO.insert(questionVO);
+	}
+	
 	public int delete(QuestionVO questionVO) throws Exception {
 		return questionDAO.delete(questionVO);
 	}
