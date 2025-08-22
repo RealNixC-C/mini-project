@@ -5,9 +5,15 @@
   
  <mapper namespace="com.goodee.mini.support.SupportDao">
 
-	<insert id="save" parameterType="SupportVO">
-		INSERT INTO SUPPORT (mem_no, amount, order_id, payment_key, payment_method, status, created_at, updated_at)
-        VALUES (#{memNo}, #{amount}, #{orderId}, #{paymentKey}, #{paymentMethod}, #{status}, NOW(), NOW())
+	<update id="updatePayRequest" parameterType="SupportVO">
+		UPDATE SUPPORT
+		SET payment_method = #{paymentMethod}, status = #{status}
+		WHERE payment_key = #{paymentKey}
+	</update>
+
+	<insert id="savePayRequest" parameterType="SupportVO">
+		INSERT INTO SUPPORT (mem_no, amount, order_id, payment_key, status)
+		VALUES (#{memNo}, #{amount}, #{orderId}, #{paymentKey}, #{status})
 	</insert>
 
 	<select id="findByMemNo" parameterType="long" resultType="SupportVO">
@@ -17,5 +23,6 @@
         WHERE mem_no = #{memNo}
         ORDER BY created_at DESC
     </select>
+    
 
 </mapper>

@@ -74,9 +74,11 @@
         });
 	  
 	  btnSupport.addEventListener("click", async function () {
+		  const orderId = "ORDER-" + Date.now();
+		  
           await widgets.requestPayment({
-            orderId: "T9WsLei7K1ruCi8KJBVmn",
-            orderName: "토스 티셔츠 외 2건",
+            orderId: orderId,
+            orderName: "일시 후원",
             successUrl: window.location.origin + "/support/toss/success",
             failUrl: window.location.origin + "/support/toss/fail",
             customerEmail: "customer123@gmail.com",
