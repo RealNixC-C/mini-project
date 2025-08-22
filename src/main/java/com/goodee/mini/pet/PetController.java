@@ -114,7 +114,10 @@ public class PetController {
 		return petService.fileDelete(petFileVO);
 	}
 	
-	
+	@GetMapping("adopt")
+	public String adopt(Model model, PetVO petVO) throws Exception {
+		return "pet/adopt";
+	}
 	
 	
 	
